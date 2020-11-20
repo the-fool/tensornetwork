@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+  <div class="columns">
+    {% if articles %}
+    <div class="column articles">
+      {% for a in articles %}
+      <article>
+        <div class="columns">
+          <div class="column">
+            <h2><a href="{% url 'detail' a.id %}">{{ a.title }}</a></h2>
+            <div class="authors">
+              <a href="#">John Dewey</a>,
+              <a href="#">John Searle</a>
+            </div>
+            <div class="uid">
+              Nov 18, 2020
+            </div>
+          </div>
+          <div class="column is-one-quarter" style="text-align:right">
+            <a href="" class="button is-light">Like</a>
+          </div>
+        </div>
+        <div class="abstract">
+          {{ a.summary }}
+        </div>
+      </article>
+      <hr>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p>No articles</p>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

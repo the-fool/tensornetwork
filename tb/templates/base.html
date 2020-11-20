@@ -1,0 +1,80 @@
+{% load static %}
+
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TensorNetwork Hub</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+
+<body>
+  <nav class="navbar has-shadow is-spaced" role="navigation" aria-label="main-navigation">
+    <div class="container">
+
+      <div class="navbar-brand">
+        <div class="navbar-item">
+          <span id="brand">
+            TensorNetwork Hub
+          </span>
+        </div>
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-start">
+          <a href="" class="navbar-item">
+            Authors
+          </a>
+          <a href="" class="navbar-item">
+            Tags
+          </a>
+
+          <div class="navbar-item">
+            |
+          </div>
+
+          <div class="navbar-item">
+            <div class="control has-icons-right">
+              <input type="text" class="input" placeholder="Search">
+              <span class="icon is-small is-right">
+                <i class="fas fa-search"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            {% if user.is_authenticated %}
+            {{ user.username }}
+            {% else %}
+            <div class="buttons">
+              <a class="button is-light" href="{% url 'account_login' %}">
+                Sign in
+              </a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+  <script src="{% static 'main.js' %}"></script>
+</body>
+
+</html>
